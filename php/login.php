@@ -12,8 +12,24 @@
     <link rel="icon" href="../assets/ntf.png" type="image/png">
     <script src="script.js"></script>
 </head>
-
+<?php 
+    $emailErr = $passwordErr = "";
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Please enter your email properly";
+        }
+        if(empty($password) || strlen($password) < 8) {
+            $passwordErr = "Please Enter your password properly";
+        }
+        else {
+            echo "<script>alert('Login Successfully') </script>";
+        }
+    }
+?>
 <body>
+
     <section class="section">
         <div class="header1">
             <div class="left">
@@ -23,9 +39,11 @@
         <div class="headerSection">
             <div class="form">
                 <p class="ftitle">Sign In</p>
-                <form action="#">
+                <form action="<?php echo htmlspecialchars ($_SERVER["PHP_SELF"]);?>" method="POST">
                     <input type="text" name="email" id="email" placeholder="Email or Phone number">
+                    <span class="error">* <?php echo $emailErr;?> </span>
                     <input type="password" name="password" id="passwd" placeholder="Password">
+                    <span class="error">* <?php echo $passwordErr; ?></span>
                     <input type="submit" value="Sign In" id="submitBtn">
                 </form>
                 <div class="choice">
@@ -49,29 +67,7 @@
                     </div>
                 </div>
             </div>
-            <div class="footer">
-                <div class="box">
-                    <p>Questions? Call 000-800-919-1694</p>
-                    <div class="table">
-                        <table>
-                            <tr>
-                                <td>FAQ</td>
-                                <td>Help Center</td>
-                                <td>Terms of Use</td>
-                                <td>Privacy</td>
-                            </tr>
-                            <tr>
-                                <td>Cookie Prefrence</td>
-                                <td>Corporate Information</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <select name="language" id="language" class="language">
-                        <option value="english">English</option>
-                        <option value="hindi">Hindi</option>
-                    </select>
-                </div>
-                </div>
+            
         </div>
     </section>
 </body>
