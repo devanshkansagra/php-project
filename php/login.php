@@ -27,7 +27,14 @@
             $passwordErr = "Please Enter your password properly";
         }
         else {
-            echo "<script>alert('Login Successfully') </script>";
+            $query = mysqli_query($conn, "SELECT * FROM `users` WHERE Email='$email' AND Password='$password';");
+            $num = mysqli_num_rows($query);
+            if($num == 1){
+                echo "<script>alert('Login Successful');</script>";
+            }
+            else {
+                echo "<script>alert('Invalid Credentials');</script>";
+            }
         }
     }
 ?>
