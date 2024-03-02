@@ -12,6 +12,12 @@
     <link rel="icon" href="../assets/ntf.png" type="image/png">
     <script src="script.js"></script>
 </head>
+<?php 
+    include('./config.php');
+?>
+
+
+<body>
 <?php
 $fnameErr = $lnameErr = $phoneErr = $emailErr = $passwordErr = $cpasswordErr = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -39,11 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($password != $cpasswd) {
         $cpasswordErr = "Passwords doesn't match";
     }
+    else {
+        $query = mysqli_query($conn,"INSERT INTO `users`(`FirstName`, `LastName`, `Email`, `Mobile`, `Password`) VALUES ('$fname','$lname','$email',$phone,'$password');");
+        
+    }
 }
 ?>
-
-<body>
-
     <section class="section">
         <div class="header1">
             <div class="left">

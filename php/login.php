@@ -13,6 +13,9 @@
     <script src="script.js"></script>
 </head>
 <?php 
+    include('./config.php');
+?>
+<?php 
     $emailErr = $passwordErr = "";
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST["email"];
