@@ -1,95 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/media_queries.css">
-    <link rel="stylesheet" href="../css/signupStyle.css">
-    <link rel="icon" href="../assets/ntf.png" type="image/png">
-    <script src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up Form</title>
+  <link rel="stylesheet" href="../css/stylesForSignup.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<?php 
-    include('./config.php');
+<?php
+include('./config.php');
 ?>
+<?php 
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        
+        $nameErr = $emailErr = $passwordErr = $cpasswordErr = "";
 
+        // Declaring the variables
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $cpassword = $_POST["cpassword"];
+
+        if($password != $cpassword) {
+            echo "<script>alert('Passwords doesn't match')</script>";
+
+        }
+
+        $query = "INSERT INTO movieUsers(Name, Email, Password) VALUES ('$name','$email','$password')";
+        $result = mysqli_query($conn, $query);
+        if($result) {
+            echo "<script>alert('Submitted Successfully')</script>";
+        }
+        else {
+            echo "<script>alert('Not Submitted Successfully')</script>";
+        }
+    }
+?>
 
 <body>
-<?php
-$fnameErr = $lnameErr = $phoneErr = $emailErr = $passwordErr = $cpasswordErr = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fname = $_POST["firstName"];
-    $lname = $_POST["lastName"];
-    $phone = $_POST["phone"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $cpasswd = $_POST["cpassword"];
-    if ($fname == "") {
-        $fnameErr = "Please enter your first name properly";
-    }
-    if (empty($lname)) {
-        $lnameErr = "Please Enter your last name properly";
-    }
-    if (empty($phone) || !is_numeric($phone) || strlen($phone) != 10) {
-        $phoneErr = "Please enter your phone number properly";
-    }
-    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $emailErr = "Please enter your email properly";
-    }
-    if (empty($password) || strlen($password) < 8) {
-        $passwordErr = "Please Enter your password properly";
-    }
-    if ($password != $cpasswd) {
-        $cpasswordErr = "Passwords doesn't match";
-    }
-    else {
-        $query = mysqli_query($conn,"INSERT INTO `users`(`FirstName`, `LastName`, `Email`, `Mobile`, `Password`) VALUES ('$fname','$lname','$email',$phone,'$password');");
-        
-    }
-}
-?>
-    <section class="section">
-        <div class="header1">
-            <div class="left">
-                <img src="../assets/logo.png" alt="">
-            </div>
-        </div>
-        <div class="headerSection">
-            <div class="form">
-                <p class="ftitle">Sign Up</p>
-                <form action="<?php echo htmlspecialchars ($_SERVER["PHP_SELF"]);?>" method="POST">
-                    <input type="text" name="firstName" id="fname" placeholder="First Name">
-                    <span class="error">*
-                        <?php echo $fnameErr; ?>
-                    </span>
-                    <input type="text" name="lastName" id="lname" placeholder="First Name">
-                    <span class="error">*
-                        <?php echo $lnameErr; ?>
-                    </span>
-                    <input type="text" name="phone" id="phone" placeholder="Mobile Number">
-                    <span class="error">*
-                        <?php echo $phoneErr; ?>
-                    </span>
-                    <input type="text" name="email" id="email" placeholder="Email or Phone number">
-                    <span class="error">*
-                        <?php echo $emailErr; ?>
-                    </span>
-                    <input type="password" name="password" id="passwd" placeholder="Password">
-                    <span class="error">*
-                        <?php echo $passwordErr; ?>
-                    </span>
-                    <input type="password" name="cpassword" id="cpasswd" placeholder="Confirm Password">
-                    <span class="error">*
-                        <?php echo $cpasswordErr; ?>
-                    </span>
-                    <input type="submit" value="Sign up" id="submitBtn">
-                </form>
-            </div>
-        </div>
-    </section>
+  <div class="wrapper">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+      <h1>Sign Up</h1>
+      <div class="input-box">
+        <input type="text" name="name" id="name" placeholder="Name" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box">
+        <input type="email" name="email" placeholder="Email" required>
+        <i class='bx bx-envelope'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" name="password" placeholder="Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" name="cpassword" placeholder="Confirm Password" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      <div class="input-box">
+        <input type="file" id="profile-photo" accept="image/*">
+        <label for="profile-photo" class="file-label">Upload Profile Photo</label>
+        <div class="profile-preview" id="profile-preview" style="display: none;"></div>
+        <span id="upload-label" class="upload-label"></span>
+      </div>
+    
+      <input type="submit" class="btn" value="Submit">
+      <div class="register-link">
+        <p>Already have an account? <a href="./login.php">Login</a></p>
+      </div>
+    </form>
+  </div>
+  <script src="../js/script.js"></script>
 </body>
-
 </html>
+

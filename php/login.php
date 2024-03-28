@@ -1,85 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/media_queries.css">
-    <link rel="stylesheet" href="../css/loginStyle.css">
-    <link rel="icon" href="../assets/ntf.png" type="image/png">
-    <script src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="../css/stylesForLogin.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <?php 
     include('./config.php');
 ?>
 <?php 
-    $emailErr = $passwordErr = "";
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST["email"];
         $password = $_POST["password"];
-        if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Please enter your email properly";
-        }
-        if(empty($password) || strlen($password) < 8) {
-            $passwordErr = "Please Enter your password properly";
+
+        $query = "SELECT * FROM movieUsers WHERE Email = '$email'";
+        $result = mysqli_query($conn, $query);
+
+        if(mysqli_num_rows($result) > 0) {
+            header("location:/PHP-Project/public/index.html");
         }
         else {
-            $query = mysqli_query($conn, "SELECT * FROM `users` WHERE Email='$email' AND Password='$password';");
-            $num = mysqli_num_rows($query);
-            if($num == 1){
-                echo "<script>alert('Login Successful');</script>";
-            }
-            else {
-                echo "<script>alert('Invalid Credentials');</script>";
-            }
+            echo "<script>alert('Invalid Credentials');</script>";
         }
     }
 ?>
 <body>
-
-    <section class="section">
-        <div class="header1">
-            <div class="left">
-                <img src="../assets/logo.png" alt="">
-            </div>
-        </div>
-        <div class="headerSection">
-            <div class="form">
-                <p class="ftitle">Sign In</p>
-                <form action="<?php echo htmlspecialchars ($_SERVER["PHP_SELF"]);?>" method="POST">
-                    <input type="text" name="email" id="email" placeholder="Email or Phone number">
-                    <span class="error">* <?php echo $emailErr;?> </span>
-                    <input type="password" name="password" id="passwd" placeholder="Password">
-                    <span class="error">* <?php echo $passwordErr; ?></span>
-                    <input type="submit" value="Sign In" id="submitBtn">
-                </form>
-                <div class="choice">
-                    <div class="input">
-                        <input type="checkbox" name="remember" id="remember" checked>&nbsp;Remember me
-                    </div>
-                    <div class="ask">
-                        Need Help?
-                    </div>
-                </div>
-                <div class="new">
-                    <span>New to Netflix?</span> Sign up now.
-                </div>
-                <div class="security">
-                    <span class="sec">This page is protected by Google reCAPTCHA to ensure you're not a bot.</span><span
-                        class="more" onclick="more()"> Learn more.</span>
-                    <div class="moreDetails" id="details">
-                        The information collected by Google reCAPTCHA is subject to the Google Privacy Policy and Terms
-                        of Service, and is used for providing, maintaining, and improving the reCAPTCHA service and for
-                        general security purposes (it is not used for personalised advertising by Google).
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </section>
+  <div class="wrapper">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+      <h1>Login</h1>
+      <div class="input-box">
+        <input type="text" name="email" placeholder="Email" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" name="password" placeholder="Password" required>
+        <i class='bx bxs-lock-alt' ></i>
+      </div>
+      <div class="remember-forgot">
+        <label><input type="checkbox">Remember Me</label>
+        <a href="#">Forgot Password</a>
+      </div>
+      <input type="submit" class="btn" value="Login"></input>
+      <div class="register-link">
+        <p>Don't have an account? <a href="./signup.php">Register</a></p>
+      </div>
+    </form>
+  </div>
 </body>
-
 </html>
