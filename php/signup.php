@@ -26,13 +26,16 @@ include('./config.php');
 
         }
 
-        $query = "INSERT INTO movieUsers(Name, Email, Password) VALUES ('$name','$email','$password')";
-        $result = mysqli_query($conn, $query);
-        if($result) {
-            echo "<script>alert('Submitted Successfully')</script>";
+        $quer2 = "SELECT * FROM movieUsers WHERE Email = '$email'";
+        $result = mysqli_query($conn, $quer2);
+        
+        if(mysqli_num_rows($result) > 0) {
+            echo "<script>alert('Email Already Exists')</script>";
         }
         else {
-            echo "<script>alert('Not Submitted Successfully')</script>";
+            $query = mysqli_query($conn, "INSERT INTO movieUsers(Name, Email, Password) VALUES ('$name','$email','$password')");
+            echo "<script>alert('Submitted Successfully')</script>";
+            header("location:/PHP-Project/public/index.html");
         }
     }
 ?>
