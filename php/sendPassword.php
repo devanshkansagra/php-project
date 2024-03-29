@@ -31,9 +31,9 @@ if (isset($_POST["email"])) {
         $mail->Port       = 465;
 
         // Recipients
-        $mail->setFrom('dkansagra04@gmail.com', 'Devansh Kansagra');
+        $mail->setFrom('lorem.ipsum.sample.email@gmail.com', 'Devansh Kansagra');
         $mail->addAddress($_POST["email"]);
-        $mail->addReplyTo('dkansagra04@gmail.com', 'Devansh Kansagra');
+        $mail->addReplyTo('lorem.ipsum.sample.email@gmail.com', 'Devansh Kansagra');
 
         
         // Content
@@ -44,11 +44,12 @@ if (isset($_POST["email"])) {
         echo "
             <script>
                 alert('Check your email for Password!');
+                window.location.href='/PHP-Project/php/login.php';
             </script>
         ";
         $mail->send();
 
-        header("location:/PHP-Project/public/index.html");
+        // header("location:/PHP-Project/public/index.html");
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }

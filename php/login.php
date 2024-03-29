@@ -7,28 +7,9 @@
   <link rel="stylesheet" href="../css/stylesForLogin.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
-<?php 
-    include('./config.php');
-?>
-<?php 
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-
-        $query = "SELECT * FROM movieUsers WHERE Email = '$email'";
-        $result = mysqli_query($conn, $query);
-
-        if(mysqli_num_rows($result) > 0) {
-            header("location:/PHP-Project/public/index.html");
-        }
-        else {
-            echo "<script>alert('Invalid Credentials');</script>";
-        }
-    }
-?>
 <body>
   <div class="wrapper">
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+    <form action="./sendLogin.php" method="POST">
       <h1>Login</h1>
       <div class="input-box">
         <input type="text" name="email" placeholder="Email" required>
