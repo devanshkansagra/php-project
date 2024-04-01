@@ -30,9 +30,9 @@ if (isset($_POST["email"])) {
             $mail->Port       = 465;
     
             // Recipients
-            $mail->setFrom('lorem.ipsum.sample.email@gmail.com', 'Devansh Kansagra');
+            $mail->setFrom('lorem.ipsum.sample.email@gmail.com', 'PHP-Project');
             $mail->addAddress($_POST["email"]);
-            $mail->addReplyTo('lorem.ipsum.sample.email@gmail.com', 'Devansh Kansagra');
+            $mail->addReplyTo('lorem.ipsum.sample.email@gmail.com', 'PHP-Project');
     
             $otp = rand(100000, 999999);
             $_SESSION['otp'] = $otp;
