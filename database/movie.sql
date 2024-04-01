@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 02, 2024 at 01:40 PM
+-- Generation Time: Apr 01, 2024 at 05:59 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,26 +24,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `movieUsers`
 --
 
-CREATE TABLE `users` (
-  `id` int(10) NOT NULL,
-  `FirstName` varchar(50) NOT NULL,
-  `LastName` varchar(50) NOT NULL,
-  `Email` varchar(60) NOT NULL,
-  `Mobile` bigint(10) NOT NULL,
+CREATE TABLE `movieUsers` (
+  `id` int(100) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `Email` varchar(50) NOT NULL,
   `Password` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `movieUsers`
+--
+
+INSERT INTO `movieUsers` (`id`, `Name`, `Email`, `Password`) VALUES
+(1, 'Devansh', 'dkansagra04@gmail.com', '9879879871'),
+(2, 'Pratham Patel', 'pradpat1918@gmail.com', 'PradPatel123'),
+(3, 'Admin', 'admin@gmail.com', 'admin@^&*'),
+(4, 'Rishi Patodiya', 'rishipatodiya12@gmail.com', 'NamiBoobs');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `users`
+-- Indexes for table `movieUsers`
 --
-ALTER TABLE `users`
+ALTER TABLE `movieUsers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -51,10 +59,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `movieUsers`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `movieUsers`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
