@@ -21,7 +21,7 @@ include('./config.php');
         $password = $_POST["password"];
         $cpassword = $_POST["cpassword"];
 
-        if($password != $cpassword) {
+        if($password !== $cpassword) {
             echo "<script>alert('Passwords doesn't match')</script>";
 
         }
@@ -59,12 +59,6 @@ include('./config.php');
       <div class="input-box">
         <input type="password" name="cpassword" placeholder="Confirm Password" required>
         <i class='bx bxs-lock-alt'></i>
-      </div>
-      <div class="input-box">
-        <input type="file" id="profile-photo" accept="image/*">
-        <label for="profile-photo" class="file-label">Upload Profile Photo</label>
-        <div class="profile-preview" id="profile-preview" style="display: none;"></div>
-        <span id="upload-label" class="upload-label"></span>
       </div>
     
       <input type="submit" class="btn" value="Submit">

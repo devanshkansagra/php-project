@@ -12,7 +12,7 @@ body{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: rgb(53, 51, 50); /* Background color */
+  background-color: rgb(22 22 22);
   font-family: 'Poppins', serif;
 }
 
@@ -20,7 +20,7 @@ body{
   width: 420px;
   background: rgb(43, 43, 41);
   box-shadow: rgba(27, 27, 25, 0.1) 0px 0px 20px; /* Green background */
-  border: 2px solid rgba(255, 255, 255, .2);
+  /* border: 2px solid rgba(255, 255, 255, .2); */
   color: #fff;
   border-radius: 12px;
   padding: 30px 40px;
@@ -88,17 +88,17 @@ body{
   text-decoration: underline;
 }
 
-.wrapper .btn{
+.wrapper .btn {
   width: 100%;
   height: 45px;
-  background: #586ee9;; /* White button background */
+  background: #ff0000;
   border: none;
   outline: none;
   border-radius: 40px;
   box-shadow: 0 0 10px rgba(0, 0, 0, .1);
   cursor: pointer;
   font-size: 16px;
-  color: #ffffff; /* Button text color */
+  color: #ffffff;
   font-weight: 600;
 }
 

@@ -12,14 +12,14 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(22 22 22);
 }
 
 .wrapper {
   width: 420px;
   background: rgb(43, 43, 41);
   box-shadow: rgba(27, 27, 25, 0.1) 0px 0px 20px;
-  border: 2px solid rgba(255, 255, 255, .2);
+  /* border: 2px solid rgba(255, 255, 255, .2); */
   color: #fff;
   border-radius: 12px;
   padding: 30px 40px;
@@ -101,10 +101,11 @@ body {
   /* Darker shade on hover */
 }
 
+
 .wrapper .btn {
   width: 100%;
   height: 45px;
-  background: #586ee9;
+  background: #ff0000;
   border: none;
   outline: none;
   border-radius: 40px;
