@@ -1,3 +1,8 @@
+<?php 
+  if(isset($_COOKIE["Email"]) && isset($_COOKIE["Password"])) {
+    header("location:/PHP-Project/public/index.html");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

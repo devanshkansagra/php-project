@@ -1,3 +1,8 @@
+<?php 
+  if(isset($_COOKIE["Email"]) && isset($_COOKIE["Password"])) {
+    header("location:/PHP-Project/public/index.html");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,20 +27,27 @@ include('./config.php');
         $cpassword = $_POST["cpassword"];
 
         if($password !== $cpassword) {
-            echo "<script>alert('Passwords doesn't match')</script>";
+          echo "<script>alert('Passwords doesn't match')</script>";
 
-        }
-
-        $quer2 = "SELECT * FROM movieUsers WHERE Email = '$email'";
-        $result = mysqli_query($conn, $quer2);
-        
-        if(mysqli_num_rows($result) > 0) {
-            echo "<script>alert('Email Already Exists')</script>";
         }
         else {
+          $quer2 = "SELECT * FROM movieUsers WHERE Email = '$email'";
+          $result = mysqli_query($conn, $quer2);
+          
+          if(mysqli_num_rows($result) > 0) {
+            echo "<script>alert('Email Already Exists')</script>";
+          }
+          else {
             $query = mysqli_query($conn, "INSERT INTO movieUsers(Name, Email, Password) VALUES ('$name','$email','$password')");
+
+            // Setting the cookies
+            setcookie("Email", $email, time() + 120, '/');
+            setcookie("Password", $password, time() + 120, '/');
+
+
             echo "<script>alert('Submitted Successfully')</script>";
             header("location:/PHP-Project/public/index.html");
+          }
         }
     }
 ?>

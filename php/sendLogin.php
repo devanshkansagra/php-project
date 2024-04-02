@@ -17,6 +17,10 @@ if (isset($_POST["email"])) {
     $query = "SELECT * FROM movieUsers WHERE Email = '$email' AND Password = '$password'";
     $result = mysqli_query($conn, $query);
 
+    // Setting the cookies
+    setcookie("Email", $email, time() + 120, '/');
+    setcookie("Password", $password, time() + 120, '/');
+
     if(mysqli_num_rows($result) > 0) {
         try {
 
