@@ -38,3 +38,13 @@ document.getElementById("signup-form").addEventListener("submit", function(event
    console.log("Email: " + email);
    console.log("Password: " + password);
 });
+
+let deleteEle = document.getElementById('deleteBtn');
+deleteEle.addEventListener('click', () => {
+   alert('Are you sure you want to delete?');
+})
+
+let deleteAll = document.getElementById('deleteAll');
+deleteAll.addEventListener('click', () => {
+   alert('Are you sure you want to delete all element?')
+})
