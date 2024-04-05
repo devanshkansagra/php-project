@@ -19,6 +19,7 @@ if (isset($_POST["email"])) {
     $queryResult = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($queryResult);
     $password = $row['Password'];
+    $_SESSION['email'] = $email;
     try {
 
         // Server settings
@@ -35,16 +36,18 @@ if (isset($_POST["email"])) {
         $mail->addAddress($_POST["email"]);
         $mail->addReplyTo('lorem.ipsum.sample.email@gmail.com', 'PHP-Project');
 
-        
+        $code = rand(100000, 999999);
+        $_SESSION['code'] = $code;
+
         // Content
         $mail->isHTML(true);
-        $mail->Subject = 'Password is Fetched';
-        $mail->Body = "Your password is: $password";
+        $mail->Subject = 'Thanks you for reaching us!';
+        $mail->Body = "This is your reset password code $code Please do not share it with anyone";
 
         echo "
             <script>
-                alert('Check your email for Password!');
-                window.location.href='/PHP-Project/php/login.php';
+                alert('Check your email for security code!');
+                window.location.href='/PHP-Project/php/reset.php';
             </script>
         ";
         $mail->send();

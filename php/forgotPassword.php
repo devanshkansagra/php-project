@@ -10,8 +10,8 @@
 <body>
   <div class="wrapper">
     <form action="./sendPassword.php" method="POST">
-      <h1>Forgot Your Passsword</h1>
-      <p>Enter your email address associated with your account and we will send your stored password via mail</p>
+      <h1>Forgot Your Password</h1>
+      <p>Enter your email address associated with your account and we will send you a 6 digit security code</p>
       <div class="input-box">
         <input type="text" name="email" placeholder="Email" required>
         <i class='bx bxs-user'></i>
