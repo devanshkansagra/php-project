@@ -25,6 +25,7 @@ include('./config.php');
         $email = $_POST["email"];
         $password = $_POST["password"];
         $cpassword = $_POST["cpassword"];
+        $lastLogin = date('Y-m-d H:i:s');
 
         if($password !== $cpassword) {
           echo "<script>alert('Passwords doesn't match')</script>";
@@ -38,12 +39,12 @@ include('./config.php');
             echo "<script>alert('Email Already Exists')</script>";
           }
           else {
-            $query = mysqli_query($conn, "INSERT INTO movieUsers(Name, Email, Password) VALUES ('$name','$email','$password')");
-
+            
             // Setting the cookies
             setcookie("Email", $email, time() + 120, '/');
             setcookie("Password", $password, time() + 120, '/');
-
+            
+            $query = mysqli_query($conn, "INSERT INTO movieUsers(Name, Email, Password, LastLogin) VALUES ('$name','$email','$password', '$lastLogin')");
 
             echo "<script>alert('Submitted Successfully')</script>";
             header("location:/PHP-Project/public/index.html");

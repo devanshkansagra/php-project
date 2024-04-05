@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Table Example</title>
+  <title>Admin</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  <!-- Boxicons CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.7/css/boxicons.min.css">
@@ -15,7 +15,7 @@
 <body data-bs-theme="dark">
   <nav class="navbar bg-body-tertiary">
     <div class="container">
-      <a class="navbar-brand">Navbar</a>
+      <a class="navbar-brand">Admin</a>
       <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
@@ -32,7 +32,7 @@
   <div class="container mt-5">
     <div class="d-flex justify-content-between">
       <div>
-        <button class="btn btn-success">Export as PDF&nbsp;<i class='bx bx-export'></i></button>
+        <a href="./generatePDF.php" class="btn btn-success">Export as PDF&nbsp;<i class='bx bx-export'></i></a>
       </div>
       <div>
         <form action="./deleteAll.php" method="post">
@@ -45,24 +45,28 @@
         <table class="table" id="dataTable" border=1>
           <thead>
             <tr>
+              <th>Sr No</th>
               <th>Name</th>
               <th>Email</th>
               <th>Password</th>
-              <th>Edit</th>
+              <th>Last Login/Signup</th>
               <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             <?php 
               $result = mysqli_query($conn, 'SELECT * FROM movieUsers');
+              $id = 1;
               while ($data = mysqli_fetch_array($result)) {
                 echo "<tr>";
+                echo "<td>" . $id . "</td>";
                 echo "<td>" . $data["Name"] . "</td>";
                 echo "<td>" . $data["Email"] . "</td>";
                 echo "<td>" . $data["Password"] . "</td>";
-                echo '<td><a href="./edit.php?id=' . $data['id'] . '" class="btn btn-primary" id="deleteBtn">Edit <i class="bx bx-pencil"></i></a></td>';
+                echo "<td>" . $data["LastLogin"] . "</td>";
                 echo '<td><a href="./delete.php?id=' . $data['id'] . '" class="btn btn-danger" id="deleteBtn">Delete <i class="bx bx-trash"></i></a></td>';
                 echo "</tr>";
+                $id += 1;
               }
             ?>
           </tbody>

@@ -16,9 +16,8 @@ if (isset($_POST["email"])) {
     $password = $_POST["password"];
     $query = "SELECT * FROM movieUsers WHERE Email = '$email' AND Password = '$password'";
     $result = mysqli_query($conn, $query);
-
-    
     if(mysqli_num_rows($result) > 0) {
+        
         // Setting the cookies
         setcookie("Email", $email, time() + 120, '/');
         setcookie("Password", $password, time() + 120, '/');
@@ -53,6 +52,9 @@ if (isset($_POST["email"])) {
                 </script>
             ";
             $mail->send();
+            $lastLogin = date('Y-m-d H:i:s');
+            $updateLogin = "UPDATE movieUsers SET lastLogin = '$lastLogin' WHERE Email = '$email'";
+            $updateQuery = mysqli_query($conn, $updateLogin);
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
