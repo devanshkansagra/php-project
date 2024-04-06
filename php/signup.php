@@ -27,7 +27,7 @@ include('./config.php');
         $cpassword = $_POST["cpassword"];
         $lastLogin = date('Y-m-d H:i:s');
 
-        if($password !== $cpassword) {
+        if($password != $cpassword) {
           echo "<script>alert('Passwords doesn't match')</script>";
 
         }

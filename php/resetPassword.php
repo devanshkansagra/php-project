@@ -9,7 +9,7 @@
     $sessionCode = $_SESSION['code'];
 
     if(isset($_POST["newPassword"])) {
-        if($newPass !== $confirmPass) {
+        if($newPass != $confirmPass) {
             echo "
                 <script>
                     alert('Passwords doesn't match');
