@@ -35,9 +35,16 @@
         <a href="./generatePDF.php" class="btn btn-success">Export as PDF&nbsp;<i class='bx bx-export'></i></a>
       </div>
       <div>
-        <form action="./deleteAll.php" method="post">
+        </div>
+        <div class="d-flex">
+          <form class="d-flex mx-2" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        <!-- <form action="./deleteAll.php" method="post">
           <input type="submit" class="btn btn-danger" value="Delete All" id="deleteAll">
-        </form>
+        </form> -->
+        <a href="#" onclick="confirmDeleteAll()" class="btn btn-danger" id="deleteBtn">Delete All <i class="bx bx-trash"></i></a>
       </div>
     </div>
     <div class="row">
@@ -64,7 +71,7 @@
                 echo "<td>" . $data["Email"] . "</td>";
                 echo "<td>" . $data["Password"] . "</td>";
                 echo "<td>" . $data["LastLogin"] . "</td>";
-                echo '<td><a href="./delete.php?id=' . $data['id'] . '" class="btn btn-danger" id="deleteBtn">Delete <i class="bx bx-trash"></i></a></td>';
+                echo '<td><a href="#" onclick="confirmDelete(' . $data['id'] . ')" class="btn btn-danger" id="deleteBtn">Delete <i class="bx bx-trash"></i></a></td>';
                 echo "</tr>";
                 $id += 1;
               }
@@ -78,7 +85,18 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  
+  <script>
+    function confirmDelete(id) {
+      if(confirm('Are you sure you want to delete this item?')) {
+        window.location.href = './delete.php?id='+id
+      }
+    }
+    function confirmDeleteAll() {
+      if(confirm('Are you sure you want to delete all the items')) {
+        window.location.href = './deleteAll.php'
+      }
+    }
+  </script>
   
 </body>
 </html>
