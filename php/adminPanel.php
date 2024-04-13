@@ -1,3 +1,6 @@
+<?php 
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +14,14 @@
 </head>
 <?php 
   include('./config.php');
+  if(isset($_SESSION['showAlert'])) {
+    echo "
+      <script>
+        alert('Your login key has been updated kindly please check it out your profile!');
+      </script>
+    ";
+    unset($_SESSION['showAlert']);
+  }
 ?>
 <body data-bs-theme="dark">
   <nav class="navbar bg-body-tertiary">
@@ -31,8 +42,13 @@
   </nav>
   <div class="container mt-5">
     <div class="d-flex justify-content-between">
-      <div>
-        <a href="./generatePDF.php" class="btn btn-success">Export as PDF&nbsp;<i class='bx bx-export'></i></a>
+      <div class="d-flex">
+        <div class="mx-2">
+        <a href="./adminSignupForm.php" target="" class="btn btn-primary">Add new Admin&nbsp;<i class='bx bx-user'></i></a>
+        </div>
+        <div class="mx-2">
+          <a href="./generatePDF.php" target="__blank" class="btn btn-success">Export as PDF&nbsp;<i class='bx bx-export'></i></a>
+        </div>
       </div>
       <div>
         </div>
@@ -41,9 +57,6 @@
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
-        <!-- <form action="./deleteAll.php" method="post">
-          <input type="submit" class="btn btn-danger" value="Delete All" id="deleteAll">
-        </form> -->
         <a href="#" onclick="confirmDeleteAll()" class="btn btn-danger" id="deleteBtn">Delete All <i class="bx bx-trash"></i></a>
       </div>
     </div>
