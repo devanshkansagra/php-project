@@ -21,6 +21,7 @@ if (isset($_POST["email"])) {
         // Setting the cookies
         setcookie("Email", $email, time() + 120, '/');
         setcookie("Password", $password, time() + 120, '/');
+        
         try {
 
             // Server settings

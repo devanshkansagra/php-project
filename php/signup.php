@@ -22,7 +22,12 @@ include('./config.php');
           $result = mysqli_query($conn, $quer2);
           
           if(mysqli_num_rows($result) > 0) {
-            echo "<script>alert('Email Already Exists')</script>";
+            echo "
+              <script>
+                alert('Email Already Exists')
+                window.location.href='/PHP-Project/php/signupForm.php'
+              </script>
+              ";
           }
           else {
             
@@ -32,8 +37,11 @@ include('./config.php');
             
             $query = mysqli_query($conn, "INSERT INTO movieUsers(Name, Email, Password, LastLogin) VALUES ('$name','$email','$password', '$lastLogin')");
 
-            echo "<script>alert('Submitted Successfully')</script>";
-            header("location:/PHP-Project/public/index.html");
+            echo "
+            <script>
+              alert('Submitted Successfully')
+              window.location.href='/PHP-Project/public/index.html'
+            </script>";
           }
         }
     }
