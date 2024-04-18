@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 06, 2024 at 09:58 AM
+-- Generation Time: Apr 18, 2024 at 11:18 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -31,6 +31,8 @@ CREATE TABLE `movieUsers` (
   `id` int(100) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
+  `Phone` bigint(10) NOT NULL,
+  `DOB` date DEFAULT NULL,
   `Password` varchar(64) NOT NULL,
   `LastLogin` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -39,12 +41,11 @@ CREATE TABLE `movieUsers` (
 -- Dumping data for table `movieUsers`
 --
 
-INSERT INTO `movieUsers` (`id`, `Name`, `Email`, `Password`, `LastLogin`) VALUES
-(22, 'Devansh', 'dkansagra04@gmail.com', '9879879871', '2024-04-05 18:29:23.000000'),
-(23, 'Pratham Patel', 'pradpat1918@gmail.com', '1231231234', '2024-04-05 10:28:01.000000'),
-(24, 'Manav Kalola', 'manavkalola1612@gmail.com', '1234', '2024-04-05 14:26:06.000000'),
-(27, 'John Doe', 'nabor77592@agromgt.com', 'bvmengineering', '2024-04-05 19:40:11.000000'),
-(28, 'Devansh Kansagra', 'devanshkansagra163@gmail.com', 'Dev123', '2024-04-05 21:14:10.000000');
+INSERT INTO `movieUsers` (`id`, `Name`, `Email`, `Phone`, `DOB`, `Password`, `LastLogin`) VALUES
+(34, 'Devansh', 'dkansagra04@gmail.com', 0, NULL, 'Devansh2004%', '2024-04-16 16:07:24.000000'),
+(35, 'Pratham Patel', 'pradpat1918@gmail.com', 0, NULL, 'PrathamPatel123', '2024-04-13 18:39:41.000000'),
+(36, 'Devansh Kansagra', 'devanshkansagra163@gmail.com', 0, NULL, '9879879871', '2024-04-13 18:44:51.000000'),
+(38, 'Dhruv Chauhan', 'chauhandhruv3528@gmail.com', 0, NULL, '1231231234', '2024-04-15 14:47:19.000000');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +65,7 @@ ALTER TABLE `movieUsers`
 -- AUTO_INCREMENT for table `movieUsers`
 --
 ALTER TABLE `movieUsers`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -9,6 +9,7 @@ include('./config.php');
         // Declaring the variables
         $name = $_POST["name"];
         $email = $_POST["email"];
+        $dob = $_POST["date"];
         $password = $_POST["password"];
         $cpassword = $_POST["cpassword"];
         $lastLogin = date('Y-m-d H:i:s');
@@ -35,7 +36,7 @@ include('./config.php');
             setcookie("Email", $email, time() + 120, '/');
             setcookie("Password", $password, time() + 120, '/');
             
-            $query = mysqli_query($conn, "INSERT INTO movieUsers(Name, Email, Password, LastLogin) VALUES ('$name','$email','$password', '$lastLogin')");
+            $query = mysqli_query($conn, "INSERT INTO movieUsers(Name, Email, DOB, Password, LastLogin) VALUES ('$name','$email','$dob','$password', '$lastLogin')");
 
             echo "
             <script>

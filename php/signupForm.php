@@ -16,7 +16,7 @@
 
 <body>
   <div class="wrapper">
-    <form action="./signup.php" method="POST">
+    <form action="./signup.php" onsubmit="return validateForm()" method="POST">
       <h1>Sign Up</h1>
       <div class="input-box">
         <input type="text" name="name" id="name" placeholder="Name" required>
@@ -27,11 +27,15 @@
         <i class='bx bx-envelope'></i>
       </div>
       <div class="input-box">
-        <input type="password" name="password" placeholder="Password" required>
+        <input type="date" name="date" placeholder="Date Of Birth" required id="date">
+        <i class='bx bxs-calendar'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" name="password" id="password" placeholder="Password" required>
         <i class='bx bxs-lock-alt'></i>
       </div>
       <div class="input-box">
-        <input type="password" name="cpassword" placeholder="Confirm Password" required>
+        <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" required>
         <i class='bx bxs-lock-alt'></i>
       </div>
     
@@ -43,5 +47,15 @@
   </div>
   <script src="../js/script.js"></script>
 </body>
-</html>
+<script>
+let password = document.getElementById('password');
+let cpassword = document.getElementById('cpassword');
 
+function validateForm() {
+  if(password.value !== cpassword.value) {
+    alert("Passwords doesn't match")
+    return false;
+  }
+}
+</script>
+</html>
