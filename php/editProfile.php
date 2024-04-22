@@ -78,7 +78,7 @@
 
     /* Profile card styles */
     .profile-card2 {
-      max-width: 700px;
+      max-width: 600px;
       margin: 50px auto;
       margin-top: 30px;
       background-color: #333; /* Updated for dark mode */
@@ -178,7 +178,7 @@
       width: 100%;
       padding: 1rem;
       font-size: 1rem;
-      border-radius: 5px;
+      border-radius: 40px;
       border: 1px solid var(--accent-color);
       background-color: #444; /* Updated for dark mode */
       color: #fff; /* Updated for dark mode */
@@ -232,14 +232,11 @@
           <label for="dob">Date of Birth</label>
         </div>
         <div class="form-group">
-          <input type="text" id="mobile" name="mobile" placeholder=" ">
-          <label for="mobile">Mobile Number</label>
-        </div>
-        <div class="form-group">
           <input type="text" id="gender" name="gender" placeholder=" ">
           <label for="gender">Gender</label>
         </div>
-        <a href="./profile.php"><button class="btn btn-primary">Save Changes</button></a>
+        <a href="./profile.php"><button style="border-radius: 40px;" class="btn btn-primary">Save Changes</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="./deleteAccount.php"><button style="background-color: rgb(255, 0, 0); border-radius: 40px;" class="btn btn-primary">Delete Account</button></a>
       </form>
     </div>
   </div>

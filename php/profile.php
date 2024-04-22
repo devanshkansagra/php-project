@@ -189,16 +189,12 @@
             <td>20-09-2001</td>
         </tr>
         <tr>
-            <td>Mobile Number</td>
-            <td>9898786233</td>
-        </tr>
-        <tr>
           <td>Gender</td>
           <td>Male</td>
         </tr>
       </table>
-      <a href="./editProfile.php"><button class="btn btn-primary">Edit Profile</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <a href="./logout.php"><button class="btn btn-primary">Logout</button></a>
+      <a href="./editProfile.php"><button style="border-radius: 40px;" class="btn btn-primary">Edit Profile</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="./logout.php"><button style="background-color: rgb(255, 0, 0); border-radius: 40px;" class="btn btn-primary">Logout</button></a>
     </div>
   </div>
 </div>
