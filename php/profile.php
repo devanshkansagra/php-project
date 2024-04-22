@@ -173,7 +173,7 @@
 <div class="container">
   <div class="profile-card1">
     <div class="profile-img" id="profileImgContainer">
-      <img src="profile-pic(m).png" alt="Profile Picture" id="profileImg">
+      <img src="../assets/profile-pic(m).png" alt="Profile Picture" id="profileImg">
       <div class="upload-icon" id="uploadIcon">
         <i class="fas fa-cloud-upload-alt"></i> <!-- Changed to the cloud upload icon -->
       </div>
