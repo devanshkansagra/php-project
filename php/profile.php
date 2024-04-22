@@ -17,18 +17,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 
   <style>
-  body {
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: rgb(22 22 22);
-    font-family: 'Poppins', serif;
-    background-image: url('../assets/bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: inset 0px 0px 100px 55px rgb(0, 0, 0);
-    backdrop-filter: brightness(0.9);
-  }
+    body {
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: rgb(22 22 22);
+      font-family: 'Poppins', serif;
+      background-image: url('../assets/bg.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      box-shadow: inset 0px 0px 100px 55px rgb(0, 0, 0);
+      backdrop-filter: brightness(0.9);
+    }
 
     /* Colors for light mode */
     :root {
@@ -72,6 +72,7 @@
       max-width: 225px;
       height: 225px;
       padding: 30px;
+      padding-bottom: 0px;
       background-color: #333; /* Updated for dark mode */
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Updated for dark mode */
@@ -109,17 +110,13 @@
 
     .upload-icon {
       position: absolute;
-      bottom: 0;
-      right: 0;
+      bottom: 40px;
+      right: 35px;
       transform: translate(50%, 50%);
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 5px;
-      border-radius: 50%;
-      cursor: pointer; /* Add cursor pointer */
-    }
-
-    .upload-icon i {
-      color: #007bff; /* Adjust color as needed */
+      /* background-color: black; */
+      padding: 7px;
+      border-radius: 45%;
+      cursor: pointer; /* Added cursor pointer */
     }
 
     .profile-info {
@@ -172,11 +169,15 @@
 <body class="dark-mode"> <!-- Added dark-mode class to body -->
 <div class="container">
   <div class="profile-card1">
+    <!-- File input for uploading photo -->
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+      <input type="file" name="fileInput" id="fileInput" style="display: none;" accept="image/*">
+      <label for="fileInput" class="upload-icon">
+        <i class="fas fa-cloud-upload-alt"></i> <!-- Changed icon class -->
+      </label>
+    </form>
     <div class="profile-img" id="profileImgContainer">
-      <img src="../assets/profile-pic(m).png" alt="Profile Picture" id="profileImg">
-      <div class="upload-icon" id="uploadIcon">
-        <i class="fas fa-cloud-upload-alt"></i> <!-- Changed to the cloud upload icon -->
-      </div>
+      <img src="../assets/profile-pic(w).png" alt="Profile Picture" id="profileImg">
     </div>
   </div>
   <div class="profile-card2">
@@ -211,15 +212,19 @@
 <!-- Font Awesome script -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 <script>
-  // JavaScript for changing profile picture when upload icon is clicked
-  const uploadIcon = document.getElementById('uploadIcon');
+  // JavaScript for changing profile picture when file input changes
+  const fileInput = document.getElementById('fileInput');
   const profileImg = document.getElementById('profileImg');
-  const profileImgContainer = document.getElementById('profileImgContainer');
 
-  uploadIcon.addEventListener('click', () => {
-    // Simulate selecting a new image
-    const newImgSrc = 'new-profile-pic.png'; // Replace with the actual path to the new image
-    profileImg.src = newImgSrc;
+  fileInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        profileImg.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
   });
 </script>
 </body>
