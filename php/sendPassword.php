@@ -46,7 +46,7 @@ if (isset($_POST["email"])) {
 
         echo "
             <script>
-                alert('Check your email for security code!');
+                alert('Check your email for security code');
                 window.location.href='/PHP-Project/php/reset.php';
             </script>
         ";

@@ -169,15 +169,8 @@
 <body class="dark-mode"> <!-- Added dark-mode class to body -->
 <div class="container">
   <div class="profile-card1">
-    <!-- File input for uploading photo -->
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-      <input type="file" name="fileInput" id="fileInput" style="display: none;" accept="image/*">
-      <label for="fileInput" class="upload-icon">
-        <i class="fas fa-cloud-upload-alt"></i> <!-- Changed icon class -->
-      </label>
-    </form>
     <div class="profile-img" id="profileImgContainer">
-      <img src="../assets/profile-pic(w).png" alt="Profile Picture" id="profileImg">
+      <img src="../assets/profile-pic(m).png" alt="Profile Picture" id="profileImg">
     </div>
   </div>
   <div class="profile-card2">
@@ -196,15 +189,12 @@
             <td>20-09-2001</td>
         </tr>
         <tr>
-            <td>Mobile Number</td>
-            <td>9898786233</td>
-        </tr>
-        <tr>
           <td>Gender</td>
           <td>Male</td>
         </tr>
       </table>
-      <a href="./editProfile.php"><button class="btn btn-primary">Edit Profile</button></a>
+      <a href="./editProfile.php"><button style="border-radius: 40px;" class="btn btn-primary">Edit Profile</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="./logout.php"><button style="background-color: rgb(255, 0, 0); border-radius: 40px;" class="btn btn-primary">Logout</button></a>
     </div>
   </div>
 </div>
