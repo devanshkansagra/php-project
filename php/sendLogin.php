@@ -48,7 +48,7 @@ if (isset($_POST["email"])) {
     
             echo "
                 <script>
-                    alert('Check your email for otp!');
+                    alert('Check your email for OTP');
                     window.location.href='/PHP-Project/php/otpVerify.php';
                 </script>
             ";

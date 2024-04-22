@@ -18,6 +18,18 @@
 
   <style>
     /* Colors for light mode */
+    body {
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: rgb(22 22 22);
+      font-family: 'Poppins', serif;
+      background-image: url('../assets/bg.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      box-shadow: inset 0px 0px 100px 55px rgb(0, 0, 0);
+      backdrop-filter: brightness(0.9);
+    }
     :root {
       --background-color: #f8f9fa;
       --text-color: #333;
@@ -178,16 +190,30 @@
       left: 0.5rem;
       font-size: 0.75rem; /* Adjust font size as needed */
     }
+    .upload-icon {
+      position: absolute;
+      bottom: 40px;
+      right: 35px;
+      transform: translate(50%, 50%);
+      /* background-color: black; */
+      padding: 7px;
+      border-radius: 45%;
+      cursor: pointer; /* Added cursor pointer */
+    }
   </style>
 </head>
 <body class="dark-mode"> <!-- Added dark-mode class to body -->
 <div class="container">
-  <div class="profile-card1">
-    <div class="profile-img">
-      <img src="profile-pic.png" alt="Profile Picture">
-      <div class="upload-icon">
-        <i class="fas fa-upload"></i>
-      </div>
+<div class="profile-card1">
+    <!-- File input for uploading photo -->
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+      <input type="file" name="fileInput" id="fileInput" style="display: none;" accept="image/*">
+      <label for="fileInput" class="upload-icon">
+        <i class="fas fa-cloud-upload-alt"></i> <!-- Changed icon class -->
+      </label>
+    </form>
+    <div class="profile-img" id="profileImgContainer">
+      <img src="../assets/profile-pic(m).png" alt="Profile Picture" id="profileImg">
     </div>
   </div>
   <div class="profile-card2">
@@ -210,8 +236,8 @@
           <label for="mobile">Mobile Number</label>
         </div>
         <div class="form-group">
-          <input type="text" id="subscription" name="subscription" placeholder=" ">
-          <label for="subscription">Renew Subscription</label>
+          <input type="text" id="gender" name="gender" placeholder=" ">
+          <label for="gender">Gender</label>
         </div>
         <a href="./profile.php"><button class="btn btn-primary">Save Changes</button></a>
       </form>
