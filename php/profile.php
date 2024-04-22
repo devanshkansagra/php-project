@@ -10,12 +10,26 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" href="../assets/sv.png" type="image/png">
 
   <!-- Google Fonts - Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
 
   <style>
+  body {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: rgb(22 22 22);
+    font-family: 'Poppins', serif;
+    background-image: url('../assets/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0px 0px 100px 55px rgb(0, 0, 0);
+    backdrop-filter: brightness(0.9);
+  }
+
     /* Colors for light mode */
     :root {
       --background-color: #f8f9fa;
@@ -157,14 +171,14 @@
 </head>
 <body class="dark-mode"> <!-- Added dark-mode class to body -->
 <div class="container">
-<div class="profile-card1">
-  <div class="profile-img" id="profileImgContainer">
-    <img src="profile-pic.png" alt="Profile Picture" id="profileImg">
-    <div class="upload-icon" id="uploadIcon">
-      <i class="fas fa-cloud-upload-alt"></i> <!-- Changed to the cloud upload icon -->
+  <div class="profile-card1">
+    <div class="profile-img" id="profileImgContainer">
+      <img src="profile-pic(m).png" alt="Profile Picture" id="profileImg">
+      <div class="upload-icon" id="uploadIcon">
+        <i class="fas fa-cloud-upload-alt"></i> <!-- Changed to the cloud upload icon -->
+      </div>
     </div>
   </div>
-</div>
   <div class="profile-card2">
     <div class="profile-info">
       <table>
@@ -185,8 +199,8 @@
             <td>9898786233</td>
         </tr>
         <tr>
-          <td>Renew Subscription</td>
-          <td>12-03-2025</td>
+          <td>Gender</td>
+          <td>Male</td>
         </tr>
       </table>
       <a href="./editProfile.php"><button class="btn btn-primary">Edit Profile</button></a>

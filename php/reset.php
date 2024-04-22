@@ -6,6 +6,7 @@
   <title>Reset your Password</title>
   <link rel="stylesheet" href="../css/stylesForLogin.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" href="../assets/sv.png" type="image/png">
 </head>
 <style>
     .mt-3 {
