@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2024 at 11:18 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Apr 23, 2024 at 02:48 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,21 +31,20 @@ CREATE TABLE `movieUsers` (
   `id` int(100) NOT NULL,
   `Name` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
-  `Phone` bigint(10) NOT NULL,
-  `DOB` date DEFAULT NULL,
   `Password` varchar(64) NOT NULL,
-  `LastLogin` datetime(6) NOT NULL
+  `profilePhoto` varchar(20) DEFAULT NULL,
+  `DateOfBirth` varchar(10) NOT NULL,
+  `Gender` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `movieUsers`
 --
 
-INSERT INTO `movieUsers` (`id`, `Name`, `Email`, `Phone`, `DOB`, `Password`, `LastLogin`) VALUES
-(34, 'Devansh', 'dkansagra04@gmail.com', 0, NULL, 'Devansh2004%', '2024-04-16 16:07:24.000000'),
-(35, 'Pratham Patel', 'pradpat1918@gmail.com', 0, NULL, 'PrathamPatel123', '2024-04-13 18:39:41.000000'),
-(36, 'Devansh Kansagra', 'devanshkansagra163@gmail.com', 0, NULL, '9879879871', '2024-04-13 18:44:51.000000'),
-(38, 'Dhruv Chauhan', 'chauhandhruv3528@gmail.com', 0, NULL, '1231231234', '2024-04-15 14:47:19.000000');
+INSERT INTO `movieUsers` (`id`, `Name`, `Email`, `Password`, `profilePhoto`, `DateOfBirth`, `Gender`) VALUES
+(2, 'Pratham Shah', 'pradpat1918@gmail.com', '1234', '', '20-08-2004', 'F'),
+(3, 'Admin', 'admin@gmail.com', 'admin@^&*', '', '', ''),
+(4, 'Rishi Patodiya', 'rishipatodiya12@gmail.com', 'NamiBoobs', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -65,7 +64,7 @@ ALTER TABLE `movieUsers`
 -- AUTO_INCREMENT for table `movieUsers`
 --
 ALTER TABLE `movieUsers`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
