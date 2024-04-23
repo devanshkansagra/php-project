@@ -1,6 +1,6 @@
 <?php 
   if(isset($_COOKIE["Email"]) && isset($_COOKIE["Password"])) {
-    header("location:/PHP-Project/public/afterLogin.html");
+    header("location:/PHP-Project/public/index.html");
   }
 ?>
 <!DOCTYPE html>
@@ -37,53 +37,3 @@
   </div>
 </body>
 </html>
-
-<?php
-session_start();
-
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "movie";
-
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve email and password from the form
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-
-
-    $query = "SELECT id, name, email, profilephoto, date_of_birth, gender FROM movieUsers WHERE Email = '$email' AND Password = '$password'";
-
-    $result = mysqli_query($connection, $query);
-
-    if ($result && mysqli_num_rows($result) > 0) {
-
-        $row = mysqli_fetch_assoc($result);
-
-
-        $_SESSION["user_id"] = $row["id"];
-        $_SESSION["user_name"] = $row["name"];
-        $_SESSION["user_email"] = $row["email"];
-        $_SESSION["user_profilephoto"] = $row["profilephoto"];
-        $_SESSION["user_date_of_birth"] = $row["date_of_birth"];
-        $_SESSION["user_gender"] = $row["gender"];
-
-
-        header("Location: /PHP-Project/public/afterLogin.html");
-        exit();
-    } else {
-        echo "Invalid email or password!";
-    }
-
-    mysqli_free_result($result);
-}
-
-mysqli_close($connection);
-?>
