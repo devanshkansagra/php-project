@@ -200,15 +200,6 @@ if(isset($_COOKIE["profilePhoto"]) && !empty($_COOKIE["profilePhoto"])) {
       margin-bottom: 1rem;
     }
 
-    /* .form-group label {
-      position: absolute;
-      top: 0;
-      left: 0;
-      margin: 0.5rem;
-      transition: all 0.3s;
-      color: var(--accent-color);
-    } */
-
     .form-group input {
       width: 70%;
       padding: 1rem;
@@ -230,39 +221,21 @@ if(isset($_COOKIE["profilePhoto"]) && !empty($_COOKIE["profilePhoto"])) {
       bottom: 40px;
       right: 35px;
       transform: translate(50%, 50%);
-      /* background-color: black; */
       padding: 7px;
       border-radius: 45%;
-      cursor: pointer; /* Added cursor pointer */
+      cursor: pointer;
     }
-  /* .form-group label {
-    position: absolute;
-    top: 50%;
-    left: 1rem; /* Adjust as needed */
-    transform: translateY(-50%);
-    margin: 0;
-    transition: all 0.3s;
-    color: var(--accent-color);
-  } */
-
-  /* .form-group input:focus + label,
-  .form-group input:not(:placeholder-shown) + label {
-    top: 0.5rem;
-    left: 1rem;
-    transform: translateY(-50%);
-    font-size: 0.75rem; /* Adjust font size as needed */
-  } */
 
   </style>
 </head>
-<body class="dark-mode"> <!-- Added dark-mode class to body -->
+<body class="dark-mode">
 <div class="container">
 <div class="profile-card1">
-    <!-- File input for uploading photo -->
+
     <form action="/upload.php" method="post" enctype="multipart/form-data">
       <input type="file" name="fileInput" id="fileInput" style="display: none;" accept="image/*">
       <label for="fileInput" class="upload-icon">
-        <i class="fas fa-cloud-upload-alt"></i> <!-- Changed icon class -->
+        <i class="fas fa-cloud-upload-alt"></i>
       </label>
     </form>
     <div class="profile-img" id="profileImgContainer">
