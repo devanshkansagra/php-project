@@ -11,6 +11,21 @@
     <link rel="icon" href="../assets/sv.png" type="image/png">
     <link rel="apple-touch-icon" href="../assets/nficon2016.png">
     <script src="../js/script.js"></script>
+    <style>
+        .slider {
+            display: none;
+        }
+
+        .slider.active {
+            display: flex;
+            flex-direction: column;
+            /* align-items: flex-end; */
+        }
+
+        .login-btn {
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,7 +35,11 @@
                 <h1>&nbsp;&nbsp;&nbsp;&nbsp;Stream Verse</h1>
             </div>
             <div class="right">
-                <a href="../php/login.php" style="font-family: 'Poppins',sans-serif">Log In</a>
+                <div class="slider">
+                    <a href="../php/profile.php" style="font-family: 'Poppins',sans-serif">Profile</a>
+                    <a href="../php/logout.php" style="font-family: 'Poppins',sans-serif">Logout</a>
+                </div>
+                <div class="login-btn" onclick="toggleSlider()">&#9776;</div>
             </div>
         </div>
         <div class="content">
@@ -160,6 +179,12 @@
             </div>
         </div>
     </section>
+    <script>
+        function toggleSlider() {
+            var slider = document.querySelector('.slider');
+            slider.classList.toggle('active');
+        }
+    </script>
 </body>
 
 </html>

@@ -200,6 +200,24 @@
       border-radius: 45%;
       cursor: pointer; /* Added cursor pointer */
     }
+  .form-group label {
+    position: absolute;
+    top: 50%;
+    left: 1rem; /* Adjust as needed */
+    transform: translateY(-50%);
+    margin: 0;
+    transition: all 0.3s;
+    color: var(--accent-color);
+  }
+
+  .form-group input:focus + label,
+  .form-group input:not(:placeholder-shown) + label {
+    top: 0.5rem;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 0.75rem; /* Adjust font size as needed */
+  }
+
   </style>
 </head>
 <body class="dark-mode"> <!-- Added dark-mode class to body -->
@@ -241,8 +259,21 @@
     </div>
   </div>
 </div>
+<script>
+  const fileInput = document.getElementById('fileInput');
+  const profileImg = document.getElementById('profileImg');
 
-<!-- Bootstrap JS -->
+  fileInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        profileImg.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
