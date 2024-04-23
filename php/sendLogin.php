@@ -3,7 +3,6 @@ include('./config.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// required files
 require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
@@ -44,7 +43,7 @@ if (isset($_POST["email"])) {
             // Content
             $mail->isHTML(true);
             $mail->Subject = 'OTP Generated!';
-            $mail->Body = "Your New otp is: $otp";
+            $mail->Body = "Your new OTP is: $otp";
     
             echo "
                 <script>

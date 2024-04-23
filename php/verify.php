@@ -8,7 +8,7 @@
             echo "
                 <script>
                     alert('Verified Successfully');
-                    window.location.href='/PHP-Project/public/index.html';
+                    window.location.href='/PHP-Project/public/afterLogin.html';
                     
                 </script>
             ";

@@ -3,7 +3,6 @@ include('./config.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// required files
 require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
@@ -42,7 +41,7 @@ if (isset($_POST["email"])) {
         // Content
         $mail->isHTML(true);
         $mail->Subject = 'Thanks you for reaching us!';
-        $mail->Body = "This is your reset password code $code Please do not share it with anyone";
+        $mail->Body = "This is your reset password code $code. \nPlease do not share it with anyone";
 
         echo "
             <script>
@@ -52,7 +51,6 @@ if (isset($_POST["email"])) {
         ";
         $mail->send();
 
-        // header("location:/PHP-Project/public/index.html");
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
