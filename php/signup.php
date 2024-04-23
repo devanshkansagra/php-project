@@ -36,7 +36,7 @@ include('./config.php');
             setcookie("Email", $email, time() + (86400 * 30), '/');
             setcookie("Password", $password, time() + (86400 * 30), '/');
             
-            $query = mysqli_query($conn, "INSERT INTO movieUsers(Name, Email, DOB, Password, LastLogin) VALUES ('$name','$email','$dob','$password', '$lastLogin')");
+            $query = mysqli_query($conn, "INSERT INTO movieUsers(Name, Email, DateOfBirth, Password, LastLogin) VALUES ('$name','$email','$dob','$password', '$lastLogin')");
 
             echo "
             <script>

@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     header("Location: profile.php");
     exit();
-}
+
 
 $email = $_COOKIE["Email"];
 $query = "SELECT * FROM movieUsers WHERE Email = '$email'";
@@ -30,6 +30,8 @@ if(isset($_COOKIE["profilePhoto"]) && !empty($_COOKIE["profilePhoto"])) {
     $profilePhoto = $_COOKIE["profilePhoto"];
 } else {
     $profilePhoto = "../assets/profile-pic(m).png"; // Default profile photo
+}
+
 }
 ?>
 
