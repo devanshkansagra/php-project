@@ -1,3 +1,38 @@
+<?php 
+  session_start();
+  include('./config.php');
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $dob = $_POST['dob'];
+    $gender = $_POST['gender'];
+
+    setcookie("Name", $name, time() + (86400 * 30), "/");
+    setcookie("Email", $email, time() + (86400 * 30), "/");
+    setcookie("DateOfBirth", $dob, time() + (86400 * 30), "/");
+    setcookie("Gender", $gender, time() + (86400 * 30), "/");
+
+    $update_query = "UPDATE movieUsers SET Name = '$name', DateOfBirth='$dob', Gender='$gender' WHERE Email='$email'";
+    mysqli_query($conn, $update_query);
+
+    header("Location: profile.php");
+    exit();
+}
+
+$email = $_COOKIE["Email"];
+$query = "SELECT * FROM movieUsers WHERE Email = '$email'";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+
+if(isset($_COOKIE["profilePhoto"]) && !empty($_COOKIE["profilePhoto"])) {
+    $profilePhoto = $_COOKIE["profilePhoto"];
+} else {
+    $profilePhoto = "../assets/profile-pic(m).png"; // Default profile photo
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,7 +113,7 @@
 
     /* Profile card styles */
     .profile-card2 {
-      max-width: 600px;
+      max-width: 700px;
       margin: 50px auto;
       margin-top: 30px;
       background-color: #333; /* Updated for dark mode */
@@ -165,17 +200,17 @@
       margin-bottom: 1rem;
     }
 
-    .form-group label {
+    /* .form-group label {
       position: absolute;
       top: 0;
       left: 0;
       margin: 0.5rem;
       transition: all 0.3s;
       color: var(--accent-color);
-    }
+    } */
 
     .form-group input {
-      width: 100%;
+      width: 70%;
       padding: 1rem;
       font-size: 1rem;
       border-radius: 40px;
@@ -200,7 +235,7 @@
       border-radius: 45%;
       cursor: pointer; /* Added cursor pointer */
     }
-  .form-group label {
+  /* .form-group label {
     position: absolute;
     top: 50%;
     left: 1rem; /* Adjust as needed */
@@ -208,15 +243,15 @@
     margin: 0;
     transition: all 0.3s;
     color: var(--accent-color);
-  }
+  } */
 
-  .form-group input:focus + label,
+  /* .form-group input:focus + label,
   .form-group input:not(:placeholder-shown) + label {
     top: 0.5rem;
     left: 1rem;
     transform: translateY(-50%);
     font-size: 0.75rem; /* Adjust font size as needed */
-  }
+  } */
 
   </style>
 </head>
@@ -224,34 +259,34 @@
 <div class="container">
 <div class="profile-card1">
     <!-- File input for uploading photo -->
-    <form action="upload.php" method="post" enctype="multipart/form-data">
+    <form action="/upload.php" method="post" enctype="multipart/form-data">
       <input type="file" name="fileInput" id="fileInput" style="display: none;" accept="image/*">
       <label for="fileInput" class="upload-icon">
         <i class="fas fa-cloud-upload-alt"></i> <!-- Changed icon class -->
       </label>
     </form>
     <div class="profile-img" id="profileImgContainer">
-      <img src="../assets/profile-pic(m).png" alt="Profile Picture" id="profileImg">
+      <img src="<?php echo $profilePhoto; ?>" alt="Profile Picture" id="profileImg">
     </div>
   </div>
   <div class="profile-card2">
     <div class="profile-info">
-      <form>
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <div class="form-group">
-          <input type="text" id="name" name="name" placeholder=" ">
-          <label for="name">Name</label>
+        <label for="name">Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" id="name" name="name" placeholder=" " value="<?php echo $row["Name"]; ?>">  
         </div>
         <div class="form-group">
-          <input type="email" id="email" name="email" placeholder=" ">
-          <label for="email">Email</label>
+          <label for="email">Email</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="email" id="email" name="email" placeholder=" " value="<?php echo $row["Email"]; ?>">
         </div>
         <div class="form-group">
-          <input type="text" id="dob" name="dob" placeholder=" ">
-          <label for="dob">Date of Birth</label>
+          <label for="dob">DOB</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="text" id="dob" name="dob" placeholder=" " value="<?php echo $row["DateOfBirth"]; ?>">
         </div>
         <div class="form-group">
-          <input type="text" id="gender" name="gender" placeholder=" ">
-          <label for="gender">Gender</label>
+          <label for="gender">Gender</label>&nbsp;&nbsp;
+          <input type="text" id="gender" name="gender" placeholder=" " value="<?php echo$row["Gender"]; ?>">
         </div>
         <a href="./profile.php"><button style="border-radius: 40px;" class="btn btn-primary">Save Changes</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="./deleteAccount.php"><button style="background-color: rgb(255, 0, 0); border-radius: 40px;" class="btn btn-primary">Delete Account</button></a>

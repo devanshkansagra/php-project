@@ -18,8 +18,8 @@ if (isset($_POST["email"])) {
     if(mysqli_num_rows($result) > 0) {
         
         // Setting the cookies
-        setcookie("Email", $email, time() + 120, '/');
-        setcookie("Password", $password, time() + 120, '/');
+        setcookie("Email", $email, time() + (86400 * 30), '/');
+        setcookie("Password", $password, time() + (86400 * 30), '/');
         
         try {
 

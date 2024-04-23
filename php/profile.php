@@ -1,4 +1,23 @@
-<?php session_start(); ?>
+<?php 
+  if(!(isset($_COOKIE["Email"]) && isset($_COOKIE["Password"]))) {
+    header("location:/PHP-Project/php/login.php");
+  }
+?>
+
+<?php session_start(); 
+  include('./config.php');
+  $email = $_COOKIE["Email"];
+  $query = "SELECT * FROM movieUsers WHERE Email = '$email'";
+
+  $result = mysqli_query($conn, $query);
+  $row = mysqli_fetch_assoc($result);
+
+  if(isset($_COOKIE["profilePhoto"]) && !empty($_COOKIE["profilePhoto"])) {
+      $profilePhoto = $_COOKIE["profilePhoto"];
+  } else {
+      $profilePhoto = "../assets/profile-pic(m).png"; // Default profile photo
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -163,14 +182,7 @@
   <div class="container">
     <div class="profile-card1">
       <div class="profile-img" id="profileImgContainer">
-
-        <?php 
-          if(isset($_SESSION["user_profilephoto"]) && !empty($_SESSION["user_profilephoto"])) {
-            echo '<img src="../assets/' . $_SESSION["user_profilephoto"] . '" alt="Profile Picture" id="profileImg">';
-          } else {
-            echo '<img src="../assets/profile-pic(m).png" alt="Profile Picture" id="profileImg">';
-          }
-        ?>
+        <img src="<?php echo $profilePhoto; ?>" alt="Profile Picture" id="profileImg">
       </div>
     </div>
     <div class="profile-card2">
@@ -178,19 +190,19 @@
         <table>
           <tr>
             <td>Name</td>
-            <td><?php echo $_SESSION["user_name"]; ?></td>
+            <td><?php echo $row["Name"]; ?></td>
           </tr>
           <tr>
             <td>Email</td>
-            <td><?php echo $_SESSION["user_email"]; ?></td>
+            <td><?php echo $row["Email"]; ?></td>
           </tr>
           <tr>
             <td>Date of Birth</td>
-            <td><?php echo $_SESSION["user_date_of_birth"]; ?></td>
+            <td><?php echo $row["DateOfBirth"]; ?></td>
           </tr>
           <tr>
             <td>Gender</td>
-            <td><?php echo $_SESSION["user_gender"]; ?></td>
+            <td><?php echo $row["Gender"]; ?></td>
           </tr>
         </table>
       <a href="./editProfile.php"><button style="border-radius: 40px;" class="btn btn-primary">Edit Profile</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
