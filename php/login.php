@@ -1,6 +1,6 @@
 <?php 
   if(isset($_COOKIE["Email"]) && isset($_COOKIE["Password"])) {
-    header("location:/PHP-Project/public/index.html");
+    header("location:/PHP-Project/php/home.php");
   }
 ?>
 <!DOCTYPE html>
