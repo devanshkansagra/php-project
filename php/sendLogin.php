@@ -15,11 +15,13 @@ if (isset($_POST["email"])) {
     $password = $_POST["password"];
     $query = "SELECT * FROM movieUsers WHERE Email = '$email' AND Password = '$password'";
     $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
     if(mysqli_num_rows($result) > 0) {
         
         // Setting the cookies
         setcookie("Email", $email, time() + (86400 * 30), '/');
         setcookie("Password", $password, time() + (86400 * 30), '/');
+        setcookie("profilePhoto", $row["profilePhoto"], time() + (86400 * 30), "/");
         setcookie("id", $id, time() + (86400 * 30), '/');
         try {
 

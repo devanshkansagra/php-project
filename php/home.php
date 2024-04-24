@@ -12,16 +12,28 @@
     <link rel="stylesheet" href="../css/dev-styles.css">
     <link href="../css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;800&family=Tiro+Devanagari+Hindi&display=swap');
+
+        *{
+            font-family: 'Poppins',sans-serif;
+        }
+        .genre, .home {
+    margin-right: 10px; /* Adjust this value as needed */
+}
+
+    </style>
 </head>
 
 <body class="sb-nav-fixed bg-black">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="./home.php">Stream Verse</a>
+        <a class="navbar-brand ps-3" href="./home.php" style="font-weight: bold; font-size: x-large;">Stream Verse</a>
         <!-- <a class="navbar-brand ps-3" href="index.html">Home</a> -->
         <!-- Sidebar Toggle-->
-        <button class="btn btn-sm order-1 order-lg-0 me-4 me-lg-0 dev-font-3 navbar-brand" id="sidebarToggle"
-            href="#!">Genres</button>
+        <button class="btn btn-sm order-1 order-lg-0 me-4 me-lg-0 dev-font-3 navbar-brand home mr-2" id="sidebarToggle" href="./home.php">Home</button>
+        <button class="btn btn-sm order-1 order-lg-0 me-4 me-lg-0 dev-font-3 navbar-brand genre mr-2" id="sidebarToggle" href="#!">Genre</button>
+
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">

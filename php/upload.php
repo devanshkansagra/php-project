@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['fileInput'])) {
             echo "Wrong file extension.";
         }
     } else {
-        echo "Error occurred during file upload.";
+        header("Location: ./profile.php");
     }
 } else {
     echo "No file selected.";

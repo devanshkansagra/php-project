@@ -6,10 +6,8 @@
         $sessionOTP = $_SESSION['otp'];
         $sessionOTPAdmin = $_SESSION['otpAdmin'];
         if($otp == $sessionOTP) {
-            echo "<script>
-            alert('Verified Successfully');
-                </script>";
 
+                // Sign up
                 if(isset($_COOKIE["DateOfBirth"])){
                     $name = $_COOKIE["Name"];
                     $email = $_COOKIE["Email"];
@@ -20,7 +18,11 @@
                     $query = mysqli_query($conn, "INSERT INTO movieUsers(Name, Email, DateOfBirth, Password, LastLogin) VALUES ('$name','$email','$dob','$password', '$lastLogin')");
                 }
             
-            echo "<script>window.location.href='/PHP-Project/php/home.php';</script>";
+            echo "
+                <script>
+                    alert('Verified Successfully');
+                    window.location.href='/PHP-Project/php/home.php';
+                </script>";
         }
         if($otp == $sessionOTPAdmin) {
             echo "

@@ -30,7 +30,7 @@
             echo "
                 <script>
                     alert('Your Password Updated Successfully');
-                    window.location.href='/PHP-Project/public/index.html'
+                    window.location.href='/PHP-Project/php/login.php'
                 </script>
             ";
         }
