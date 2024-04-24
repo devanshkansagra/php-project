@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 03:41 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: Apr 23, 2024 at 04:16 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,8 +44,6 @@ CREATE TABLE `movieUsers` (
 
 INSERT INTO `movieUsers` (`id`, `Name`, `Email`, `Password`, `profilePhoto`, `DateOfBirth`, `Gender`, `LastLogin`) VALUES
 (2, 'Pratham Shah', 'pradpat1918@gmail.com', '1234', '', '20-08-2004', 'M', NULL),
-(3, 'Admin', 'admin@gmail.com', 'admin@^&*', '', '', '', NULL),
-(4, 'Rishi Patodiya', 'rishipatodiya12@gmail.com', 'NamiBoobs', '', '', '', NULL),
 (5, 'Devansh Kansagra', 'dkansagra04@gmail.com', '1234', NULL, '07-07-2004', NULL, NULL);
 
 --
@@ -66,7 +64,7 @@ ALTER TABLE `movieUsers`
 -- AUTO_INCREMENT for table `movieUsers`
 --
 ALTER TABLE `movieUsers`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

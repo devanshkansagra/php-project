@@ -1,22 +1,20 @@
 <?php 
-  if(!(isset($_COOKIE["Email"]) && isset($_COOKIE["Password"]))) {
-    header("location:/PHP-Project/php/login.php");
-  }
-?>
+if (!(isset($_COOKIE["Email"]) && isset($_COOKIE["Password"]))) {
+  header("location:/PHP-Project/php/login.php");
+  exit();
+}
+session_start(); 
+include('./config.php');
+$email = $_COOKIE["Email"];
+$query = "SELECT * FROM movieUsers WHERE Email = '$email'";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
 
-<?php session_start(); 
-  include('./config.php');
-  $email = $_COOKIE["Email"];
-  $query = "SELECT * FROM movieUsers WHERE Email = '$email'";
-
-  $result = mysqli_query($conn, $query);
-  $row = mysqli_fetch_assoc($result);
-
-  if(isset($_COOKIE["profilePhoto"]) && !empty($_COOKIE["profilePhoto"])) {
-      $profilePhoto = $_COOKIE["profilePhoto"];
-  } else {
-      $profilePhoto = "../assets/profile-pic(m).png"; // Default profile photo
-  }
+if (isset($_COOKIE["profilePhoto"]) && !empty($_COOKIE["profilePhoto"])) {
+  $profilePhoto = "./uploads/" . $row["profilePhoto"];
+} else {
+  $profilePhoto = "../assets/profile-pic(m).png";  // Default profile photo
+}
 ?>
 
 <!DOCTYPE html>

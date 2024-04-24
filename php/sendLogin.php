@@ -20,7 +20,7 @@ if (isset($_POST["email"])) {
         // Setting the cookies
         setcookie("Email", $email, time() + (86400 * 30), '/');
         setcookie("Password", $password, time() + (86400 * 30), '/');
-        
+        setcookie("id", $id, time() + (86400 * 30), '/');
         try {
 
             // Server settings
